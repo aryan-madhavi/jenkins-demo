@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
           withCredentials([usernamePassword(credentialsId: env.DOCKERHUB_CRED, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-            // sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+            sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
             sh "docker push ${env.IMAGE}:${env.BUILD_NUMBER}"
             sh "docker push ${env.IMAGE}:latest"
           }
