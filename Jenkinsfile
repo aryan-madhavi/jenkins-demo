@@ -13,7 +13,7 @@ pipeline {
       steps {
         script {
           sh "docker build -t ${env.IMAGE}:${env.BUILD_NUMBER} ."
-          sh "docker tag ${env.IMAGE}:${imageTag} ${env.IMAGE}:latest"
+          sh "docker tag ${env.IMAGE}:${env.BUILD_NUMBER} ${env.IMAGE}:latest"
         }
       }
     }
